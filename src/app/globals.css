@@ -24,3 +24,69 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* @keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-circle {
+  @apply absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-blue-500 opacity-30;
+  animation: ripple 4s ease-out infinite;
+}
+
+.ripple-circle.delay {
+  animation-delay: 2s;
+} */
+
+/* wave background */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes waveDelayed {
+  0%, 100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+}
+
+/* These are raw classes — not Tailwind utilities */
+.wave-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #1e3a8a, #2563eb, #1e3a8a); /* dark blues */
+  opacity: 0.4;
+  filter: blur(40px);
+  animation: wave 10s ease-in-out infinite;
+  z-index: -1;
+}
+
+.wave-bg-delayed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #3b82f6, #60a5fa, #3b82f6); /* lighter blues */
+  opacity: 0.3;
+  filter: blur(60px);
+  animation: waveDelayed 14s ease-in-out infinite;
+  z-index: -2;
+}
