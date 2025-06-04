@@ -1,9 +1,11 @@
-import RippleBackground from "@/components/RippleBg";
-// import TypeWriter from "@/components/TypeWriter";
-// import Image from "next/image";
+import Features from "@/components/Features";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <RippleBackground/>
+    <main>
+      <Hero/>
+      <Features />
+    </main>
   );
 }
