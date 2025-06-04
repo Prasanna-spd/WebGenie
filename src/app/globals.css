@@ -29,20 +29,70 @@ body {
 
 @keyframes ripple {
   0% {
-    transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0.7;
+    filter: blur(0px);
+  }
+  25% {
+    /* transform: translate(-50%, -50%) scale(1.2); */
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  50% {
+    /* transform: translate(-50%, -50%) scale(2.5); */
+    opacity: 0.3;
+    filter: blur(4px);
+  }
+  75% {
+    /* transform: translate(-50%, -50%) scale(3.2); */
+    opacity: 0.15;
+    filter: blur(6px);
+  }
+  85% {
+    /* transform: translate(-50%, -50%) scale(3.2); */
+    opacity: 0.1;
+    filter: blur(7px);
   }
   100% {
-    transform: scale(4);
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+
+.ripple-circle {
+  @apply absolute w-96 h-96 rounded-full opacity-40;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 4s ease-out infinite;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, #8b5cf6, #ec4899, transparent);
+  filter: blur(6px);
+}
+
+
+.ripple-circle.delay {
+  animation-delay: 2s;
+}
+
+.ripple-circle.delay-2 {
+  animation-delay: 4s;
+}
+
+
+/* typing words */
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
     opacity: 0;
   }
 }
 
-.ripple-circle {
-  @apply absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-blue-500 opacity-30;
-  animation: ripple 4s ease-out infinite;
-}
-
-.ripple-circle.delay {
-  animation-delay: 2s;
+.animate-blink {
+  animation: blink 1s step-end infinite;
 }
