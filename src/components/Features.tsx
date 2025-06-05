@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import BuildNow from "./BuildNow";
 
 function Features() {
   return (
-    <div className="relative text-white bg-gray-900 h-screen flex flex-col md:flex-row md:justify-between">
-      
+    <div id="features" className="relative text-white bg-gray-900 h-screen flex flex-col md:flex-row md:justify-between">
       {/* <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-gray-900 to-transparent z-10 pointer-events-none" /> */}
-      
+
       {/* TEXT CONTAINER */}
       <div className="flex-1 flex flex-col justify-center items-center text-center gap-8 p-6">
         <div className="space-y-10">
@@ -32,6 +32,7 @@ function Features() {
             </div>
           </div>
         </div>
+       <BuildNow/>
       </div>
 
       {/* IMAGE CONATAINER */}

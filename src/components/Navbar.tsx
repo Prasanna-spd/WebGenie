@@ -1,9 +1,5 @@
 import React from "react";
-// import Menu from "./Menu";
 import Link from "next/link";
-// import CartIcon from "./CartIcon";
-// import Image from "next/image";
-// import UserLinks from "./UserLinks";
 
 const Navbar = () => {
   //   const user = false;
@@ -35,7 +31,7 @@ const Navbar = () => {
     // </div>
     <>
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md border border-zinc-700 text-white shadow-lg">
-        <Link className="hover:text-gray-300 transition-colors" href="/">
+        <Link className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
           Features
         </Link>
         <Link className="hover:text-gray-300 transition-colors" href="/">
