@@ -1,6 +1,6 @@
 import { ContentProps } from "@/types/content";
 
-const EcommerceTemplate = ({ title, subtitle, about, cta }: ContentProps) => {
+const EcommerceTemplate: React.FC<ContentProps> = ({ title, subtitle, about, cta }) => {
     return (
       <div className="bg-white text-black">
         <header className="py-20 text-center bg-gray-100">
@@ -11,6 +11,12 @@ const EcommerceTemplate = ({ title, subtitle, about, cta }: ContentProps) => {
         <section className="p-10 max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-4">About</h2>
           <p>{about}</p>
+        </section>
+  
+        <section className="p-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="border p-6 rounded shadow">Product Feature 1</div>
+          <div className="border p-6 rounded shadow">Product Feature 2</div>
+          <div className="border p-6 rounded shadow">Product Feature 3</div>
         </section>
   
         <footer className="text-center py-10 bg-gray-100">

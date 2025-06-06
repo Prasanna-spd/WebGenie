@@ -33,7 +33,7 @@ const TypeWriter = () => {
   }, [charIndex, isDeleting, wordIndex]);
 
   return (
-    <h2 className="text-4xl md:text-5xl font-medium text-center mt-6 text-amber-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+    <h2 className="text-4xl md:text-5xl font-medium text-center mt-6 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
       <span>{text}</span>
       <span className="text-white animate-blink">|</span>
     </h2>
