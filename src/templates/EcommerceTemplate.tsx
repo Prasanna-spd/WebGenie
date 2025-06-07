@@ -1,32 +1,53 @@
-import { ContentProps } from "@/types/content";
+"use client";
 
-const EcommerceTemplate: React.FC<ContentProps> = ({ title, subtitle, about, cta }) => {
-    return (
-      <div className="bg-white text-black">
-        <header className="py-20 text-center bg-gray-100">
-          <h1 className="text-4xl font-bold">{title}</h1>
-          <p className="mt-4 text-lg">{subtitle}</p>
-        </header>
-  
-        <section className="p-10 max-w-4xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-4">About</h2>
-          <p>{about}</p>
-        </section>
-  
-        <section className="p-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="border p-6 rounded shadow">Product Feature 1</div>
-          <div className="border p-6 rounded shadow">Product Feature 2</div>
-          <div className="border p-6 rounded shadow">Product Feature 3</div>
-        </section>
-  
-        <footer className="text-center py-10 bg-gray-100">
-          <button className="bg-indigo-600 text-white px-6 py-3 rounded-full">
-            {cta}
-          </button>
-        </footer>
-      </div>
-    );
-  };
-  
-  export default EcommerceTemplate;
-  
+import React from "react";
+
+interface EcommerceTemplateProps {
+  title: string;
+  subtitle: string;
+  about: string;
+  cta: string;
+}
+
+const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, about, cta }) => {
+  return (
+    <div className="bg-white text-gray-900 font-sans">
+      {/* Hero Section */}
+      <section className="bg-emerald-600 text-white py-16 px-6 text-center">
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <p className="mt-4 text-xl">{subtitle}</p>
+        <button className="mt-6 bg-white text-emerald-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+          {cta}
+        </button>
+      </section>
+
+      {/* About Section */}
+      <section className="px-6 py-12 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-4">About Us</h2>
+        <p className="text-lg">{about}</p>
+      </section>
+
+      {/* Product Showcase Placeholder */}
+      <section className="px-6 py-12 bg-gray-50">
+        <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[1, 2, 3].map((_, i) => (
+            <div
+              key={i}
+              className="bg-white p-4 border rounded shadow hover:shadow-md transition"
+            >
+              <div className="bg-gray-200 h-40 rounded mb-4"></div>
+              <h3 className="font-semibold mb-2">Product Name</h3>
+              <p className="text-sm text-gray-600">Short product description.</p>
+              <button className="mt-4 text-emerald-600 font-medium hover:underline">
+                View More
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default EcommerceTemplate;
