@@ -28,30 +28,31 @@ const featuredTemplates = [
     title: "FitForce – Gym & Fitness Studio Template",
     price: 29,
   },
+
   {
     image: "/realEstate.png",
-    desc: "Ideal for PaaS businesses.",
-    title: "PaaS Base",
+    title: "Platform Pro",
+    desc: "Platform Pro is a powerful and flexible website template designed specifically for Platform-as-a-Service (PaaS) companies. Whether you're targeting developers, startups, or enterprises, this layout helps you clearly communicate your product's value through feature-driven sections, integration showcases, API documentation previews, and use-case highlights. It's perfect for building trust, increasing user activation, and scaling your platform with confidence.",
     price: 29,
   },
   {
     image: "/agency.png",
-    desc: "Ideal for IaaS businesses.",
-    title: "IaaS Base",
+    title: "InfraCore",
+    desc: "InfraCore is built for modern Infrastructure-as-a-Service (IaaS) providers who want to convey reliability, speed, and scalability. With its clean, enterprise-grade design, it allows you to present your data centers, compute power, networking services, and SLAs in a compelling way. Whether you're offering public, private, or hybrid cloud solutions, this template positions your brand as a serious infrastructure partner for businesses of all sizes.",
     price: 29,
   },
   {
     image: "/restaurant.png",
-    desc: "Welcome to [Restaurant Name], where we serve more than just food—we serve experiences. From handcrafted menus to cozy ambiance, everything is curated to delight your senses.🍽️ Browse menus📍 Find our location📆 Book your table",
-    title: "RaaS Base",
+    title: "DineSuite",
+    desc: "DineSuite is an elegant and fully-featured template for Restaurant-as-a-Service (RaaS) platforms, virtual kitchen brands, and food-tech innovators. It includes sections for featured menus, chef highlights, delivery integrations, customer testimonials, reservation bookings, and location discovery. With its rich visuals and hospitality-focused layout, DineSuite creates an immersive experience that goes beyond food—it tells your brand's culinary story in style.",
     price: 29,
   },
   {
     image: "/saas.png",
-    desc: "Ideal for RaaS businesses.",
-    title: "RaaS Base",
+    title: "RetailLaunch",
+    desc: "RetailLaunch is a polished and conversion-optimized template designed for Retail-as-a-Service (RaaS) startups and enterprise platforms. Whether you're providing in-store tech, inventory management systems, or end-to-end retail automation, this layout showcases your solutions through bold visuals, use-case stories, pricing packages, and customer success features. It's the ideal starting point for brands disrupting traditional retail models with smart, scalable offerings.",
     price: 29,
-  },
+  }
 ];
 
 function TemplateSlider() {

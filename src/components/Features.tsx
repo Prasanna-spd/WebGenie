@@ -37,7 +37,7 @@ function Features() {
 
       {/* IMAGE CONATAINER */}
       <div className="flex-1 w-full relative md:h-full">
-        <Image src="/phoneLeaning.png" alt="" fill className="object-contain" />
+        <Image src="/ph_lean-removebg-preview.png" alt="" fill className="object-contain" />
       </div>
     </div>
   );
