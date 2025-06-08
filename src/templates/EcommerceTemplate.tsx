@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 interface EcommerceTemplateProps {
   title: string;
@@ -14,17 +15,17 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
     <div className="bg-white text-gray-900 font-sans">
       {/* Hero Section */}
       <section className="bg-emerald-600 text-white py-16 px-6 text-center">
-        <h1 className="text-4xl font-bold">{title}</h1>
-        <p className="mt-4 text-xl">{subtitle}</p>
+        <div className="text-4xl font-bold"><ReactMarkdown>{title}</ReactMarkdown></div>
+        <div className="mt-4 text-xl"><ReactMarkdown>{subtitle}</ReactMarkdown></div>
         <button className="mt-6 bg-white text-emerald-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
-          {cta}
+          <ReactMarkdown>{cta}</ReactMarkdown>
         </button>
       </section>
 
       {/* About Section */}
       <section className="px-6 py-12 max-w-4xl mx-auto">
         <h2 className="text-2xl font-semibold mb-4">About Us</h2>
-        <p className="text-lg">{about}</p>
+        <div className="text-lg"><ReactMarkdown>{about}</ReactMarkdown></div>
       </section>
 
       {/* Product Showcase Placeholder */}

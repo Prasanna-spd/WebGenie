@@ -34,8 +34,8 @@ const Navbar = () => {
         <Link className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
           Features
         </Link>
-        <Link className="hover:text-gray-300 transition-colors" href="/">
-          Pricing
+        <Link className="hover:text-gray-300 transition-colors" href="/templateStore">
+          Store
         </Link>
         <Link className="hover:text-gray-300 transition-colors" href="/">
           Solutions

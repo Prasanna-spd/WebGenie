@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 interface GymTemplateProps {
   title: string;
@@ -14,17 +15,17 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta }
     <div className="bg-gray-900 text-white font-sans">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-gray-800 to-black py-20 text-center px-6">
-        <h1 className="text-5xl font-extrabold tracking-wide">{title}</h1>
-        <p className="mt-4 text-xl text-gray-300">{subtitle}</p>
+        <h1 className="text-5xl font-extrabold tracking-wide"><ReactMarkdown>{title}</ReactMarkdown></h1>
+        <p className="mt-4 text-xl text-gray-300"><ReactMarkdown>{subtitle}</ReactMarkdown></p>
         <button className="mt-8 bg-red-600 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition">
-          {cta}
+          <ReactMarkdown>{cta}</ReactMarkdown>
         </button>
       </section>
 
       {/* About Section */}
       <section className="px-6 py-12 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-4 text-red-500">Why Choose Us?</h2>
-        <p className="text-lg text-gray-300 leading-relaxed">{about}</p>
+        <p className="text-lg text-gray-300 leading-relaxed"><ReactMarkdown>{about}</ReactMarkdown></p>
       </section>
 
       {/* Trainer/Workout Section (Placeholder) */}

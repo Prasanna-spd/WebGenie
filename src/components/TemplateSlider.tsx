@@ -29,19 +29,25 @@ const featuredTemplates = [
     price: 29,
   },
   {
-    image: "",
+    image: "/realEstate.png",
     desc: "Ideal for PaaS businesses.",
     title: "PaaS Base",
     price: 29,
   },
   {
-    image: "",
+    image: "/agency.png",
     desc: "Ideal for IaaS businesses.",
     title: "IaaS Base",
     price: 29,
   },
   {
-    image: "",
+    image: "/restaurant.png",
+    desc: "Welcome to [Restaurant Name], where we serve more than just food—we serve experiences. From handcrafted menus to cozy ambiance, everything is curated to delight your senses.🍽️ Browse menus📍 Find our location📆 Book your table",
+    title: "RaaS Base",
+    price: 29,
+  },
+  {
+    image: "/saas.png",
     desc: "Ideal for RaaS businesses.",
     title: "RaaS Base",
     price: 29,
@@ -76,25 +82,16 @@ function TemplateSlider() {
       >
         {featuredTemplates.map((template, idx) => (
           <SwiperSlide key={idx} className="w-[70%] md:w-[40%] lg:w-[25%] h-[100%]">
-            <ChooseTemplatesCard
-              image={template.image}
-              desc={template.desc}
-              title={template.title}
-              price={template.price}
-            />
+            <ChooseTemplatesCard image={template.image} desc={template.desc} title={template.title} price={template.price} />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <div className="mt-6">
-  <Link
-    href="/templateStore"
-    className="inline-block px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-2xl hover:bg-indigo-700 transition duration-300 shadow-lg"
-  >
-    Visit Our Template Store
-  </Link>
-</div>
-
+        <Link href="/templateStore" className="inline-block px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-2xl hover:bg-indigo-700 transition duration-300 shadow-lg">
+          Visit Our Template Store
+        </Link>
+      </div>
     </div>
   );
 }
