@@ -99,7 +99,7 @@ export default function GeneratePage() {
         return <SaaSTemplate {...content} />;
       case "restaurant":
         return <RestaurantTemplate {...content} />;
-      case "potfolio":
+      case "portfolio":
         return <PortfolioTemplate {...content} />;
       case "realEstate":
         return <RealEstateTemplate {...content} />;

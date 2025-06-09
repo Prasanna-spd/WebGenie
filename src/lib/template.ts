@@ -26,7 +26,7 @@ export interface TemplateMeta {
       title: "Showcase Your Work..",
       desc: "A personal portfolio to display your creativity, skills, and achievements.Welcome to portfolio. This space is thoughtfully designed ........",
       image: "/portfolio.png",
-      route: "/preview/gym",
+      route: "/preview/portfolio",
     },
     {
       id: "saas",
