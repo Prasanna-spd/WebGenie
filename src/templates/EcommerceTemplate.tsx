@@ -47,6 +47,15 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
           ))}
         </div>
       </section>
+      {/* Download Button */}
+              {showDownload && (
+                <div className="text-center absolute top-5 right-5">
+                  <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
+                    <GoDownload className="text-xl" />
+                    Download as HTML
+                  </button>
+                </div>
+              )}
     </div>
   );
 };

@@ -8,9 +8,10 @@ interface TemplateProps {
   subtitle: string;
   about: string;
   cta: string;
+  showDownload:boolean
 }
 
-export const SaaSTemplate: React.FC<TemplateProps> = ({ title, subtitle, about, cta }) => (
+export const SaaSTemplate: React.FC<TemplateProps> = ({ title, subtitle, about, cta,showDownload}) => (
   <div className="bg-white text-gray-900 font-sans">
     {/* Hero Section */}
     <section className=" text-red-700 py-20 px-6 text-center">
@@ -60,5 +61,14 @@ export const SaaSTemplate: React.FC<TemplateProps> = ({ title, subtitle, about, 
         </div>
       </div>
     </section>
+     {/* Download Button */}
+     {showDownload && (
+          <div className="text-center absolute top-5 right-5">
+            <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
+              <GoDownload className="text-xl" />
+              Download as HTML
+            </button>
+          </div>
+        )}
   </div>
 );

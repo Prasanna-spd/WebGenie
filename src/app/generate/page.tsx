@@ -23,6 +23,7 @@ export default function GeneratePage() {
 
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<AIContent | null>(null);
+  const [showDownload, setShowDownload] = useState(false);
 
   const hasFetched = useRef(false);
 
@@ -77,6 +78,7 @@ export default function GeneratePage() {
       };
 
       setContent(parsed);
+      setShowDownload(true)
       console.log("parsed content", content);
     } catch (error) {
       console.error("Failed to fetch or parse AI content:", error);
@@ -94,7 +96,7 @@ export default function GeneratePage() {
       case "ecomm":
         return <EcommerceTemplate {...content} />;
       case "agency":
-        return <AgencyTemplate {...content} />;
+        return <AgencyTemplate {...content} showDownload={showDownload} />;
       case "SaaS":
         return <SaaSTemplate {...content} />;
       case "restaurant":

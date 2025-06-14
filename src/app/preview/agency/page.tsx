@@ -11,6 +11,7 @@ export default function PreviewPage() {
       subtitle="We help businesses unlock potential through expert consulting."
       about="Agency is a full-service consultancy offering tailored strategies across marketing, tech, operations, and branding."
       cta="Let’s Transform Your Business"
+      showDownload={false}
     />
 
     {/* Floating Button */}
