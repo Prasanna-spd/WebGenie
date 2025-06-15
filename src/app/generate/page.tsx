@@ -24,6 +24,7 @@ export default function GeneratePage() {
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<AIContent | null>(null);
   const [showDownload, setShowDownload] = useState(false);
+  const [images, setImages] = useState<string[]>([]);
 
   const hasFetched = useRef(false);
 
@@ -33,6 +34,24 @@ export default function GeneratePage() {
     hasFetched.current = true;
     fetchContentFromAI(template);
   }, [template]);
+
+  // text-to-image generation
+
+  const fetchImageFromPrompt = async (prompt: string): Promise<string | null> => {
+    try {
+      const res = await fetch("/api/gen-image", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const data = await res.json();
+      return data.image; // This is a base64 string
+    } catch (err) {
+      console.error("Image generation failed:", err);
+      return null;
+    }
+  };
 
   const fetchContentFromAI = async (templateType: string) => {
     setLoading(true);
@@ -44,41 +63,24 @@ export default function GeneratePage() {
       });
 
       const data = await res.json();
-      const raw = data.content as string;
 
-      console.log("AI response (raw):", raw);
-      const extractSingleLineOrNext = (label: string, raw: string): string => {
-        const regex = new RegExp(`\\*\\*${label}:\\*\\*\\s*(.*?)(?:\\n|$)(?!\\*\\*)`, "i");
-        const match = raw.match(regex);
+      console.log("AI response (raw):", data);
 
-        if (match && match[1]) {
-          const value = match[1].trim();
-          if (value.length > 0) return value;
-        }
-
-        // Try to get next line if the line after the label was empty or not captured
-        const fallbackRegex = new RegExp(`\\*\\*${label}:\\*\\*\\s*\\n+(.*?)(?:\\n|$)`, "i");
-        const fallbackMatch = raw.match(fallbackRegex);
-
-        return fallbackMatch?.[1]?.trim() || "N/A";
-      };
-
-      const extractMultiLineSection = (label: string, raw: string): string => {
-        const regex = new RegExp(`\\*\\*${label}:\\*\\*\\s*\\n([\\s\\S]*?)\\n---`, "i");
-        const match = raw.match(regex);
-        return match?.[1]?.trim() || "N/A";
-      };
-
-      // Usage:
-      const parsed: AIContent = {
-        title: extractSingleLineOrNext("Title", raw),
-        subtitle: extractSingleLineOrNext("Subtitle", raw),
-        about: extractMultiLineSection("About", raw),
-        cta: extractMultiLineSection("(Call[- ]to[- ]Action \\(CTA\\))", raw),
-      };
+      const parsed: AIContent = data.content;
+      console.log("new pasring method", parsed);
 
       setContent(parsed);
-      setShowDownload(true)
+
+      // image generation
+
+      const prompts = [`E-commerce banner showing ${parsed?.title}`, `Product showcase: ${parsed?.subtitle}`, `Lifestyle image for: ${parsed?.about.slice(0, 80)}`, `Promotional image for CTA: ${parsed?.cta}`];
+
+      const imagePromises = prompts.map((p) => fetchImageFromPrompt(p));
+      const generatedImages = await Promise.all(imagePromises);
+      console.log("images",generatedImages)
+      setImages(generatedImages.filter((img) => img !== null) as string[]);
+
+      setShowDownload(true);
       console.log("parsed content", content);
     } catch (error) {
       console.error("Failed to fetch or parse AI content:", error);
@@ -92,23 +94,28 @@ export default function GeneratePage() {
 
     switch (template) {
       case "gym":
-        return <GymTemplate {...content} />;
+        return <GymTemplate {...content} showDownload={showDownload} />;
       case "ecomm":
-        return <EcommerceTemplate {...content} />;
+        return <EcommerceTemplate {...content} showDownload={showDownload} />;
       case "agency":
         return <AgencyTemplate {...content} showDownload={showDownload} />;
       case "SaaS":
-        return <SaaSTemplate {...content} />;
+        return <SaaSTemplate {...content} showDownload={showDownload} />;
       case "restaurant":
-        return <RestaurantTemplate {...content} />;
+        return <RestaurantTemplate {...content} showDownload={showDownload} />;
       case "portfolio":
-        return <PortfolioTemplate {...content} />;
+        return <PortfolioTemplate {...content} showDownload={showDownload} />;
       case "realEstate":
-        return <RealEstateTemplate {...content} />;
+        return <RealEstateTemplate {...content} showDownload={showDownload} />;
       default:
         return <p className="text-red-600 mt-10">❌ Unsupported template type.</p>;
     }
   };
 
-  return <div className="min-h-screen p-4">{loading ? <p className="text-center text-xl mt-20 animate-pulse">🔄 Generating your site...</p> : renderTemplate()}</div>;
+  return (
+    <>
+      {images&&console.log("images", images)}
+      <div className="min-h-screen p-4">{loading ? <p className="text-center text-xl mt-20 animate-pulse">🔄 Generating your site...</p> : renderTemplate()}</div>;
+    </>
+  );
 }
