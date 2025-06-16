@@ -96,7 +96,7 @@ export default function GeneratePage() {
       case "gym":
         return <GymTemplate {...content} showDownload={showDownload} />;
       case "ecomm":
-        return <EcommerceTemplate {...content} showDownload={showDownload} />;
+        return <EcommerceTemplate {...content} showDownload={showDownload} images={images}/>;
       case "agency":
         return <AgencyTemplate {...content} showDownload={showDownload} />;
       case "SaaS":

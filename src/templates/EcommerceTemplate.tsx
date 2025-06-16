@@ -10,9 +10,10 @@ interface EcommerceTemplateProps {
   about: string;
   cta: string;
   showDownload:boolean
+  images:Array<string>
 }
 
-const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, about, cta,showDownload }) => {
+const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, about, cta,showDownload ,images}) => {
  
   const exportToHTML = () => {
     const html = `
@@ -75,6 +76,13 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
     <div className="bg-white text-gray-900 font-sans">
       {/* Hero Section */}
       <section className="bg-emerald-600 text-white py-16 px-6 text-center">
+      {images?.map((image, index) => {
+  return (
+    <div key={index} className="p-2">
+      <img src={image} alt={`Generated ${index}`} className="w-full h-auto rounded shadow" />
+    </div>
+  );
+})}
         <div className="text-4xl font-bold"><ReactMarkdown>{title}</ReactMarkdown></div>
         <div className="mt-4 text-xl"><ReactMarkdown>{subtitle}</ReactMarkdown></div>
         <button className="mt-6 bg-white text-emerald-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">

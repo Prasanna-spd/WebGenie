@@ -36,25 +36,27 @@ import { NextRequest, NextResponse } from "next/server";
 //   });
 // }
 
-
-
-
 export async function POST(req: NextRequest) {
   const { prompt } = await req.json();
 
   try {
-    
-    console.log(prompt)
-    const response = await fetch("https://inference.api.nscale.com/v1/images/generations", {
+    console.log(prompt);
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.genieImage_API_KEY!}`,
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY!}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        response_format: "b64_json",
-        prompt,
-        model: "black-forest-labs/FLUX.1-schnell",
+        model: "deepseek/deepseek-r1-0528-qwen3-8b:free",
+        messages: [
+          {
+            role: "user",
+            content: `
+            Generate image content for this idea: "${prompt}".
+            `,
+          },
+        ],
       }),
     });
 
@@ -64,12 +66,11 @@ export async function POST(req: NextRequest) {
     }
 
     const blob = await response.blob();
-    const arrayBuffer = await blob.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const base64Image = `data:image/png;base64,${buffer.toString("base64")}`;
+    // const arrayBuffer = await blob.arrayBuffer();
+    // const buffer = Buffer.from(arrayBuffer);
+    // const base64Image = `data:image/png;base64,${buffer.toString("base64")}`;
 
-    return NextResponse.json({ image: base64Image }, { status: 200 });
-
+    return NextResponse.json({ image: blob }, { status: 200 });
   } catch (err) {
     // console.log(err)
     console.error("Image generation error:", err);
