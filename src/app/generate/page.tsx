@@ -12,9 +12,11 @@ import { useEffect, useRef, useState } from "react";
 
 interface AIContent {
   title: string;
+  // brand_name:string;write the exact name
   subtitle: string;
   about: string;
   cta: string;
+  // brands:Array<string>
 }
 
 export default function GeneratePage() {
@@ -24,7 +26,7 @@ export default function GeneratePage() {
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<AIContent | null>(null);
   const [showDownload, setShowDownload] = useState(false);
-  const [images, setImages] = useState<string[]>([]);
+  // const [images, setImages] = useState<string[]>([]);
 
   const hasFetched = useRef(false);
 
@@ -46,6 +48,7 @@ export default function GeneratePage() {
       });
 
       const data = await res.json();
+      console.log("the nebius frontend",data)
       return data.image; // This is a base64 string
     } catch (err) {
       console.error("Image generation failed:", err);
@@ -73,12 +76,24 @@ export default function GeneratePage() {
 
       // image generation
 
-      const prompts = [`E-commerce banner showing ${parsed?.title}`, `Product showcase: ${parsed?.subtitle}`, `Lifestyle image for: ${parsed?.about.slice(0, 80)}`, `Promotional image for CTA: ${parsed?.cta}`];
+      // const prompts = [
+      //   `E-commerce banner image for ${parsed.title}`,     // hero 1
+      //   `Modern fashion carousel image for ${parsed.subtitle}`,  // hero 2
+      //   `Lifestyle product shot for ${parsed.cta}`,         // hero 3
+      
+      //   `image for Fashion item on clean white background`,          // feature 1
+      //   `image for Trendy outfit flat lay`,                          // feature 2
+      //   `image for Close-up of fabric or accessory`,                 // feature 3
+      //   `image for Model showcasing outfit in outdoor scene`,        // feature 4
+      //   `image for Summer fashion look`,                             // best-seller 1
+      //   `image for Winter outfit promo`,                             // best-seller 2
+      //   `image for Classic casual style`,                            // best-seller 3
+      // ];
 
-      const imagePromises = prompts.map((p) => fetchImageFromPrompt(p));
-      const generatedImages = await Promise.all(imagePromises);
-      console.log("images",generatedImages)
-      setImages(generatedImages.filter((img) => img !== null) as string[]);
+      // const imagePromises = prompts.map((p) => fetchImageFromPrompt(p));
+      // const generatedImages = await Promise.all(imagePromises);
+      // console.log("images",generatedImages)
+      // setImages(generatedImages.filter((img) => img !== null) as string[]);
 
       setShowDownload(true);
       console.log("parsed content", content);
@@ -96,7 +111,8 @@ export default function GeneratePage() {
       case "gym":
         return <GymTemplate {...content} showDownload={showDownload} />;
       case "ecomm":
-        return <EcommerceTemplate {...content} showDownload={showDownload} images={images}/>;
+        return <EcommerceTemplate {...content} showDownload={showDownload}/>;
+        // return <EcommerceTemplate {...content} showDownload={showDownload} images={images}/>;
       case "agency":
         return <AgencyTemplate {...content} showDownload={showDownload} />;
       case "SaaS":
@@ -114,7 +130,7 @@ export default function GeneratePage() {
 
   return (
     <>
-      {images&&console.log("images", images)}
+      {/* {images&&console.log("images", images)} */}
       <div className="min-h-screen p-4">{loading ? <p className="text-center text-xl mt-20 animate-pulse">🔄 Generating your site...</p> : renderTemplate()}</div>;
     </>
   );
