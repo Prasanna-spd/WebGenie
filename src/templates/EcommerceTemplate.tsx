@@ -14,15 +14,15 @@ import "swiper/css/autoplay";
 
 interface EcommerceTemplateProps {
   title: string;
-  // brand_name:string;
+  brand_name:string;
   subtitle: string;
   about: string;
   cta: string;
   showDownload: boolean;
-  // images:Array<string>;
+  images:Array<string>;
   // heroImages: string[]; // 3 images
   // featureImages: string[]; // 7 images (can be split for features & best-selling)
-  // brands: string[]; // 3 brand names
+  brands: string[]; // 3 brand names
 }
 
 const brandNames = ["NIKE", "HOKA", "LI-NING", "PUMA"];
