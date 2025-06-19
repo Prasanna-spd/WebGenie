@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
             
             {
               "title": "...",
-              "brand/shop name": ".",
+              "brand_name": ".",
               "subtitle": "...",
               "about": "...",
               "cta": "...",

@@ -12,11 +12,11 @@ import { useEffect, useRef, useState } from "react";
 
 interface AIContent {
   title: string;
-  // brand_name:string;write the exact name
+  brand_name:string;
   subtitle: string;
   about: string;
   cta: string;
-  // brands:Array<string>
+  brands:Array<string>
 }
 
 export default function GeneratePage() {
@@ -69,7 +69,14 @@ export default function GeneratePage() {
 
       console.log("AI response (raw):", data);
 
-      const parsed: AIContent = data.content;
+      const parsed: AIContent = {
+        ...data.content,
+        brands: Array.isArray(data.content.brands)
+          ? data.content.brands
+          : typeof data.content.brands === "string"
+            ? data.content.brands.split(",").map((b:string) => b.trim())
+            : [],
+      }
       console.log("new pasring method", parsed);
 
       setContent(parsed);
