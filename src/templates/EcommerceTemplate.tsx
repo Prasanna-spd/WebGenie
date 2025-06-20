@@ -108,12 +108,9 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
       <meta charset="UTF-8" />
       <title>${templateData.brand_name}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-      <style>
-  
-  .opacity-100 { opacity: 1; }
-  .opacity-0 { opacity: 0; }
-</style>
+     
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     </head>
     <body class="bg-white text-gray-900 font-sans">
   
@@ -132,26 +129,34 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
       </header>
   
       <!-- Hero Section -->
-      <section class="relative w-full h-[80vh] overflow-hidden">
-  <div class="absolute inset-0 w-full h-full">
-    <div class="carousel relative h-full">
+
+<div class="w-full h-[80vh] overflow-hidden">
+  <div id="default-carousel" class="relative w-full p-4 h-full " data-carousel="slide" data-carousel-interval="3000">
+    
+    <!-- Carousel wrapper -->
+    <div class="relative w-full h-full">
       ${(base64HeroImages?.length ? base64HeroImages : base64heroDefaultImages)
         .map(
           (img, i) => `
-        <div class="absolute w-full h-full z-0 carousel-slide transition-opacity duration-1000 ease-in-out ${i === 0 ? "opacity-100" : "opacity-0 pointer-events-none"}" data-index="${i}">
-          <img src="${img}" alt="Hero Slide ${i + 1}" class="w-full h-full object-cover" />
-          <div class="absolute bottom-6 left-6 text-white drop-shadow-xl">
-            <h1 class="text-4xl font-bold">${templateData.title}</h1>
-            <p class="mt-2 text-xl">${templateData.subtitle}</p>
-          </div>
-        </div>
-      `
-        )
-        .join("")}
+          <div class="hidden duration-700 ease-in-out w-full h-full" data-carousel-item>
+            <img 
+              src="${img}" 
+              alt="Hero Slide ${i + 1}" 
+              class="w-full h-full object-cover rounded-4xl"
+            />
+            <div class="absolute bottom-6 left-6 text-white drop-shadow-xl">
+              <h1 class="text-4xl font-bold">${templateData.title}</h1>
+              <p class="mt-2 text-xl">${templateData.subtitle}</p>
+            </div>
+          </div>`
+        ).join("")}
     </div>
-  </div>
-</section>
 
+  </div>
+</div>
+
+
+      
 
   
       <!-- Shop From The Gram -->
@@ -251,27 +256,8 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
       </footer>
   
 
-     <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".carousel-slide");
-    
+     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
-    if (slides.length === 0) return;
-
-    setInterval(() => {
-     
-      slides[currentSlide].classList.remove("opacity-100", "z-10");
-      slides[currentSlide].classList.add("opacity-0","pointer-events-none");
-
-      currentSlide = (currentSlide + 1) % slides.length;
-
-      slides[currentSlide].classList.remove("opacity-0","pointer-events-none");
-      slides[currentSlide].classList.add("opacity-100", "z-10");
-      
-    }, 3000);
-  });
-</script>
 
 
 
@@ -518,3 +504,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 };
 
 export default EcommerceTemplate;
+
+
+
+
