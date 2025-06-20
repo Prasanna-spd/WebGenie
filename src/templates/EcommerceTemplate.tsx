@@ -131,25 +131,26 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
       <!-- Hero Section -->
 
 <div class="w-full h-[80vh] overflow-hidden">
-  <div id="default-carousel" class="relative w-full p-4 h-full " data-carousel="slide" data-carousel-interval="3000">
+  <div id="default-carousel" class="relative w-full p-4 h-full" data-carousel="slide" data-carousel-interval="3000">
     
     <!-- Carousel wrapper -->
     <div class="relative w-full h-full">
       ${(base64HeroImages?.length ? base64HeroImages : base64heroDefaultImages)
         .map(
           (img, i) => `
-          <div class="hidden duration-700 ease-in-out w-full h-full" data-carousel-item>
+          <div class="hidden duration-700 ease-in-out w-full h-full p-4" data-carousel-item>
             <img 
               src="${img}" 
               alt="Hero Slide ${i + 1}" 
               class="w-full h-full object-cover rounded-4xl"
             />
-            <div class="absolute bottom-6 left-6 text-white drop-shadow-xl">
+            <div class="absolute bottom-8 left-8 text-black drop-shadow-xl">
               <h1 class="text-4xl font-bold">${templateData.title}</h1>
               <p class="mt-2 text-xl">${templateData.subtitle}</p>
             </div>
           </div>`
-        ).join("")}
+        )
+        .join("")}
     </div>
 
   </div>
@@ -160,12 +161,12 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 
   
       <!-- Shop From The Gram -->
-      <section class="w-full px-6 lg:px-16 py-20">
+      <section class="w-full px-6 lg:px-12 py-20">
         <div class="text-center mb-10">
           <h2 class="text-4xl font-bold">Shop From The Gram</h2>
           <p class="text-xl text-gray-400">Discover trendy styles inspired by your favorite social media moments!</p>
         </div>
-        <div class="flex flex-wrap justify-center gap-8">
+        <div class="flex flex-wrap sm:justify-center gap-4">
           ${(base64FeatureImages?.length ? base64FeatureImages : base64heroDefaultImages)
             .map(
               (img, i) => `
@@ -352,7 +353,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 
               {/* features section */}
 
-              <div className="h-auto w-full px-4 lg:px-14 xl:px-16 py-22">
+              <div className="h-auto w-full px-4 lg:px-12 xl:px-16 py-22">
                 {/* Header */}
                 <div className="text-center mb-10">
                   <h2 className="text-4xl text-black font-bold">Shop From The Gram</h2>
@@ -360,22 +361,15 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
                 </div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-4 gap-10">
-                  {/* replace  the features images withe the ai generaed images */}
-                  {base64FeatureImages?.length
-                    ? base64FeatureImages
-                    : base64heroDefaultImages.map((img, i) => (
-                        <div key={i} className="relative rounded-2xl overflow-hidden" style={{ width: "337.5px", height: "449.7px" }}>
-                          <img
-                            src={img} // Replace with real paths
-                            alt={`Style ${i}`}
-                            className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
-                          />
-                          <div className="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-xl">
-                            <h3 className="text-lg font-semibold">Style {i}</h3>
-                          </div>
-                        </div>
-                      ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {(base64FeatureImages?.length ? base64FeatureImages : base64heroDefaultImages).map((img, i) => (
+                    <div key={i} className="relative rounded-2xl overflow-hidden aspect-[3/4]">
+                      <img src={img} alt={`Style ${i}`} className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105" />
+                      <div className="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-xl">
+                        <h3 className="text-lg font-semibold">Style {i + 1}</h3>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="w-full px-4 lg:px-14 xl:px-16 py-22 text-center">
@@ -484,12 +478,12 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 
               {/* Download Button */}
               {/* {showDownload && ( */}
-                <div className="text-center absolute top-5 right-5">
-                  <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
-                    <GoDownload className="text-xl" />
-                    Download as HTML
-                  </button>
-                </div>
+              <div className="text-center absolute top-2 right-5">
+                <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
+                  <GoDownload className="text-xl" />
+                  Download as HTML
+                </button>
+              </div>
               {/* )} */}
             </div>
           </div>
@@ -504,7 +498,3 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 };
 
 export default EcommerceTemplate;
-
-
-
-
