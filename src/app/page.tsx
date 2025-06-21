@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import TemplateSlider from "@/components/TemplateSlider";
+import Vision from "@/components/Vision";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Features />
       <TemplateSlider />
+      <Vision/>
     </main>
   );
 }

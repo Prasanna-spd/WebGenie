@@ -339,9 +339,9 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
                           <h1 className="text-4xl font-bold">
                             <ReactMarkdown>{templateData.title}</ReactMarkdown>
                           </h1>
-                          <p className="mt-4 text-xl">
+                          <div className="mt-4 text-xl">
                             <ReactMarkdown>{templateData.subtitle}</ReactMarkdown>
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </SwiperSlide>
@@ -477,14 +477,14 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
               </footer>
 
               {/* Download Button */}
-              {/* {showDownload && ( */}
+              {showDownload && (
               <div className="text-center absolute top-2 right-5">
                 <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
                   <GoDownload className="text-xl" />
                   Download as HTML
                 </button>
               </div>
-              {/* )} */}
+               )}
             </div>
           </div>
         </div>
