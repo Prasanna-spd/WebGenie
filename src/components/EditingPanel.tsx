@@ -50,7 +50,7 @@ const EditingPanel: React.FC<EditingPanelProps> = ({ title, subtitle, brand_name
 
     if (typeof index === "number" && arrayField) {
       const updatedArray = [...(formData[arrayField] as string[])];
-      updatedArray[index] = updatedValue;
+      updatedArray[index] = updatedValue as string;
       setFormData((prev) => {
         const updated = { ...prev, [arrayField]: updatedArray };
         onChange(updated);
