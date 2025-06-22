@@ -9,7 +9,7 @@ type Props = {
   price: number;
 };
 
-function ChooseTemplatesCard({ image, desc, title, price }: Props) {
+function ChooseTemplatesCard({ image, desc, title}: Props) {
   return (
     <div className="swiper-slide-active:shadow-[0_0_40px_10px_rgba(255,255,255,0.4)] h-[100%] w-[400px] md:w-[350px] bg-white rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02] flex flex-col">
       {/* Image Section */}
