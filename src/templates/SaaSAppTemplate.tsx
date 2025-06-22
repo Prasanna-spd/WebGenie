@@ -9,7 +9,7 @@ interface TemplateProps {
   subtitle: string;
   about: string;
   cta: string;
-  showDownload:boolean
+  showDownload?:boolean
 }
 
 export const SaaSTemplate: React.FC<TemplateProps> = ({ title, subtitle, about, cta,showDownload}) => {

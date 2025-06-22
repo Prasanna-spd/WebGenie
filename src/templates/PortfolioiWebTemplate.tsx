@@ -10,7 +10,7 @@ interface PortfolioTemplateProps {
   subtitle: string;
   about: string;
   cta: string;
-  showDownload:boolean
+  showDownload?:boolean
 }
 
 const PortfolioTemplate: React.FC<PortfolioTemplateProps> = ({ title, subtitle, about, cta,showDownload }) => {

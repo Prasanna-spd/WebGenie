@@ -10,7 +10,7 @@ interface GymTemplateProps {
   subtitle: string;
   about: string;
   cta: string;
-  showDownload:boolean
+  showDownload?:boolean
 }
 
 const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta ,showDownload}) => {

@@ -9,7 +9,7 @@ interface TemplateProps {
   subtitle: string;
   about: string;
   cta: string;
-  showDownload:boolean
+  showDownload?:boolean
 }
 
 export const RealEstateTemplate: React.FC<TemplateProps> = ({ title, subtitle, about, cta,showDownload }) => {
