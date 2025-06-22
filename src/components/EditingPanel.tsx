@@ -43,7 +43,9 @@ const EditingPanel: React.FC<EditingPanelProps> = ({ title, subtitle, brand_name
   }, [title, subtitle, brand_name, about, cta, address, contactNo, email, heroImages, featureImages, bestSellingImages, brands]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index?: number, arrayField?: keyof EcommerceTemplateProps) => {
-    const { name, type, value, checked } = e.target;
+    const target = e.target as HTMLInputElement;
+
+    const { name, type, value, checked } = target;
     const updatedValue = type === "checkbox" ? checked : value;
 
     if (typeof index === "number" && arrayField) {
