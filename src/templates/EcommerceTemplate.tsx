@@ -166,7 +166,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
           <h2 class="text-4xl font-bold">Shop From The Gram</h2>
           <p class="text-xl text-gray-400">Discover trendy styles inspired by your favorite social media moments!</p>
         </div>
-        <div class="flex flex-wrap sm:justify-center gap-4">
+        <div class="flex flex-wrap justify-center gap-4">
           ${(base64FeatureImages?.length ? base64FeatureImages : base64heroDefaultImages)
             .map(
               (img, i) => `
@@ -213,14 +213,14 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
       <section class="w-full px-6 lg:px-16 py-20 text-center">
         <h2 class="text-4xl font-bold text-black mb-2">Brands You'll Love</h2>
         <p class="text-lg text-gray-600 mb-10">Express your style with our standout collection—fashion meets sophistication.</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div class="text-4xl font-extrabold uppercase tracking-widest text-black font-[impact]">NIKE</div>
-          <div class="text-4xl font-semibold italic text-gray-900 border px-4 py-1 rounded-full border-black shadow-sm">HOKA</div>
-          <div class="text-4xl font-bold text-black italic tracking-tight border-b-4 border-black">LI-NING</div>
-          <div class="text-4xl font-bold text-black relative">
-            <span class="relative before:absolute before:-top-1 before:left-0 before:w-full before:h-1 before:bg-black">PUMA</span>
-          </div>
-        </div>
+          <div class="grid grid-cols-2 md:grid-cols-4  gap-10">
+    ${(templateData?.brands?.length ? templateData.brands : brandNames)
+      .map((brand, index) => {
+        const brandClass = brandStyles[index % brandStyles.length];
+        return `<div class="${brandClass}">${brand}</div>`;
+      })
+      .join("")}
+  </div>
       </section>
   
       <!-- Footer -->
@@ -235,8 +235,8 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
             <div>
               <h3 class="text-xl font-semibold mb-2">Contact Us</h3>
               <ul class="text-gray-400 space-y-1">
-                <li>Email: contact@example.com</li>
-                <li>Phone: +91 12345 67890</li>
+                <li>Email: ${templateData.email ? templateData.email : "contact@example.com"}</li>
+                <li>Phone:${templateData.contactNo ? templateData.contactNo : "+91 12345 67890"} +91 12345 67890</li>
                 <li>Support Hours: 9 AM – 6 PM</li>
               </ul>
             </div>
@@ -250,7 +250,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
             </div>
             <div>
               <h3 class="text-xl font-semibold mb-2">Address</h3>
-              <p class="text-gray-400">123 Street Name,<br>City, State, 000000<br>Country</p>
+              <p class="text-gray-400">${templateData.address ? templateData.address : "123 Street Name"},<br>City, State, 000000<br>Country</p>
             </div>
           </div>
         </div>
@@ -298,7 +298,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
               <div className="h-12 md:h-24 text-black flex items-center justify-between md:transform md:translate-x-0.5 px-4 lg:px-14 xl:px-16 ">
                 {/* Left-side Logo/name */}
                 <div className="text-xl md:font-bold">
-                  <Link href="/">{templateData?.brand_name}</Link>
+                  <Link href="/">{templateData?.brand_name||"Sample Name"}</Link>
                   {/* replace title with brand name {brand} */}
                 </div>
 
@@ -400,7 +400,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
                   <p className="text-md md:text-lg text-gray-600 mb-10">Express your style with our standout collection—fashion meets sophistication.</p>
 
                   <div className="grid grid-cols-4 gap-10">
-                    {/* replace  the features brand names with the ai generaed brand names */}
+                    
                     {(templateData.brands && templateData.brands.length > 0 ? templateData.brands : brandNames).map((brand, index) => (
                       <div key={index} className={brandStyles[index % brandStyles.length]}>
                         {brand}
@@ -489,7 +489,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
           </div>
         </div>
 
-        <button onClick={() => setShowEditor(!showEditor)} className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-full shadow-lg z-50">
+        <button onClick={() => setShowEditor(!showEditor)} className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-full shadow-lg z-50 hover:shadow-xl hover:cursor-pointer">
           {showEditor ? "Hide Editor" : "Show Editor"}
         </button>
       </div>
