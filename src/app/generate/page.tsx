@@ -39,22 +39,22 @@ export default function GeneratePage() {
 
   // text-to-image generation
 
-  const fetchImageFromPrompt = async (prompt: string): Promise<string | null> => {
-    try {
-      const res = await fetch("/api/gen-image", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
+  // const fetchImageFromPrompt = async (prompt: string): Promise<string | null> => {
+  //   try {
+  //     const res = await fetch("/api/gen-image", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ prompt }),
+  //     });
 
-      const data = await res.json();
-      console.log("the nebius frontend",data)
-      return data.image; // This is a base64 string
-    } catch (err) {
-      console.error("Image generation failed:", err);
-      return null;
-    }
-  };
+  //     const data = await res.json();
+  //     console.log("the nebius frontend",data)
+  //     return data.image; // This is a base64 string
+  //   } catch (err) {
+  //     console.error("Image generation failed:", err);
+  //     return null;
+  //   }
+  // };
 
   const fetchContentFromAI = async (templateType: string) => {
     setLoading(true);

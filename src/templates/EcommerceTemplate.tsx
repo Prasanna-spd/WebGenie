@@ -23,7 +23,7 @@ export interface EcommerceTemplateProps {
   address?: string;
   contactNo?: string;
   email?: string;
-  showDownload: boolean;
+  showDownload?: boolean;
 
   heroImages?: string[];
   featureImages?: string[];
@@ -396,7 +396,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({ title, subtitle, 
 
                 <div className="w-full py-10 px-4 lg:px-14 text-center">
                   {/* Title */}
-                  <h2 className="text-3xl md:text-4xl font-bold text-black mb-2">Brands You'll Love</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-black mb-2">Brands You&apos;ll Love</h2>
                   <p className="text-md md:text-lg text-gray-600 mb-10">Express your style with our standout collection—fashion meets sophistication.</p>
 
                   <div className="grid grid-cols-4 gap-10">

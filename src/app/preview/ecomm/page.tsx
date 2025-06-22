@@ -1,11 +1,11 @@
 import EcommerceTemplate from "@/templates/EcommerceTemplate";
-import GymTemplate from "@/templates/GymTemplate";
+// import GymTemplate from "@/templates/GymTemplate";
 import Link from "next/link";
 
 export default function PreviewPage() {
   return (
     <div className="relative min-h-screen">
-      <EcommerceTemplate title="Unwind, Shop, Repeat" subtitle="Discover top-quality products with seamless shopping experiences." about="Welcome to our online store where style meets convenience. From fashion to electronics, we've got everything to elevate your lifestyle. Fast delivery, easy returns, and trusted service — all at your fingertips." cta="Shop Now" />
+      <EcommerceTemplate title="Unwind, Shop, Repeat" subtitle="Discover top-quality products with seamless shopping experiences." about="Welcome to our online store where style meets convenience. From fashion to electronics, we've got everything to elevate your lifestyle. Fast delivery, easy returns, and trusted service — all at your fingertips." cta="Shop Now"/>
 
       {/* Floating Button */}
       <Link href="/generate?template=ecomm">
