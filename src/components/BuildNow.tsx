@@ -24,7 +24,7 @@ const BuildNow: React.FC = () => {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        // onClick={() => setIsOpen(true)}
         className="mt-8 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 hover:cursor-pointer text-white rounded-full text-lg font-semibold transition duration-300 shadow-md"
       >
         Build Now
