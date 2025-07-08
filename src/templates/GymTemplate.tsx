@@ -4,17 +4,15 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { GoDownload } from "react-icons/go";
 
-
 interface GymTemplateProps {
   title: string;
   subtitle: string;
   about: string;
   cta: string;
-  showDownload?:boolean
+  showDownload?: boolean;
 }
 
-const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta ,showDownload}) => {
-
+const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, showDownload }) => {
   const exportToHTML = () => {
     const html = `
     <!DOCTYPE html>
@@ -72,18 +70,33 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta ,
   return (
     <div className="bg-gray-900 text-white font-sans">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gray-800 to-black py-20 text-center px-6">
-        <h1 className="text-5xl font-extrabold tracking-wide"><ReactMarkdown>{title}</ReactMarkdown></h1>
-        <p className="mt-4 text-xl text-gray-300"><ReactMarkdown>{subtitle}</ReactMarkdown></p>
-        <button className="mt-8 bg-red-600 px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition">
-          <ReactMarkdown>{cta}</ReactMarkdown>
-        </button>
-      </section>
+      <div className="relative flex justify-center items-center bg-gradient-to-r from-gray-800 to-black py-20 text-center px-6 h-screen w-full">
+        <div className="absolute bottom-0 left-0 w-full h-[70%] bg-gradient-to-t from-red-600/80 to-transparent z-0 pointer-events-none"></div>
+
+        <div className="absolute flex flex-col justify-center top-0 left-20 bg-red-600 w-auto text-black ">
+          <img src="" alt="the sticker of the gym" />
+          <div className="text-2xl font-bold font-serif px-3 rotate-[-6deg]">Sample Gym page</div>
+        </div>
+        <div className="absolute top-8 right-20 space-x-4 ">
+          <button className="px-4 py-2 bg-transparent text-white border border-white rounded hover:bg-red-600 hover:cursor-pointer">Login</button>
+          <button className="px-4 py-2 bg-red-600 text-white rounded hover:bg-black hover:cursor-pointer">Register Now</button>
+        </div>
+
+        <div className="flex justify-center items-center h-screen">
+          <div className="w-[600px] h-[600px] border-4 border-red-500 border-dashed animate-rotate-pingpong rounded-full flex justify-center items-center">
+            <div className="w-120 h-120 border-4 border-red-500 border-dashed  rounded-full flex justify-center items-center">
+              <div className="w-80 h-80 bg-red-600 border-4 border-red-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* About Section */}
       <section className="px-6 py-12 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-4 text-red-500">Why Choose Us?</h2>
-        <p className="text-lg text-gray-300 leading-relaxed"><ReactMarkdown>{about}</ReactMarkdown></p>
+        <p className="text-lg text-gray-300 leading-relaxed">
+          <ReactMarkdown>{about}</ReactMarkdown>
+        </p>
       </section>
 
       {/* Trainer/Workout Section (Placeholder) */}
@@ -99,15 +112,15 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta ,
           ))}
         </div>
       </section>
-       {/* Download Button */}
-       {showDownload && (
-          <div className="text-center absolute top-5 right-5">
-            <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
-              <GoDownload className="text-xl" />
-              Download as HTML
-            </button>
-          </div>
-        )}
+      {/* Download Button */}
+      {showDownload && (
+        <div className="text-center absolute top-5 right-5">
+          <button onClick={exportToHTML} className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition flex items-center gap-2">
+            <GoDownload className="text-xl" />
+            Download as HTML
+          </button>
+        </div>
+      )}
     </div>
   );
 };
