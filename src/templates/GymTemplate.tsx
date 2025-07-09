@@ -94,7 +94,7 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, 
         </div>
 
         <div className="absolute flex flex-col justify-center top-0 left-20 bg-red-600 w-auto text-black ">
-          <Image src="#" alt="the sticker of the gym" />
+          <img src="" alt="the sticker of the gym" />
           <div className="text-2xl font-bold font-serif px-3 rotate-[-6deg]">Sample Gym page</div>
         </div>
         <div className="absolute top-8 right-20 space-x-4 ">
