@@ -3,6 +3,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { GoDownload } from "react-icons/go";
+import Image from "next/image";
 
 interface GymTemplateProps {
   title: string;
@@ -72,9 +73,28 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, 
       {/* Hero Section */}
       <div className="relative flex justify-center items-center bg-gradient-to-r from-gray-800 to-black py-20 text-center px-6 h-screen w-full">
         <div className="absolute bottom-0 left-0 w-full h-[70%] bg-gradient-to-t from-red-600/80 to-transparent z-0 pointer-events-none"></div>
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url("/ember.png")',
+            backgroundRepeat: "repeat",
+            opacity: 0.2,
+            pointerEvents: "none",
+          }}
+        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <Image src="/gymMan.png" alt="gymman" width={500} height={500} className="h-[900px] w-[500px]" />
+        </div>
+        <div className="absolute bottom-10 left-52 z-10 text-8xl text-left text-red-500 font-bold space-y-2">
+          <div>Be</div>
+          <div>Fierce</div>
+          <div>With</div>
+          <div>Wild</div>
+          <div>Workouts</div>
+        </div>
 
         <div className="absolute flex flex-col justify-center top-0 left-20 bg-red-600 w-auto text-black ">
-          <img src="" alt="the sticker of the gym" />
+          <Image src="#" alt="the sticker of the gym" />
           <div className="text-2xl font-bold font-serif px-3 rotate-[-6deg]">Sample Gym page</div>
         </div>
         <div className="absolute top-8 right-20 space-x-4 ">
