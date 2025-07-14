@@ -2,7 +2,7 @@ import React from "react";
 
 function ContactUs() {
   return (
-    <div id="contact-us" className="h-screen bg-white text-gray-900 px-6 py-12 flex items-center justify-center">
+    <div id="contact-us" className="md:h-screen sm:h-auto bg-white text-gray-900 px-6 py-12 flex justify-center items-center">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left: Contact Form */}
         <div>
