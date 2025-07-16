@@ -1,7 +1,14 @@
-import React from "react";
+"use client";
+
 import Link from "next/link";
 
-const Navbar = () => {
+type NavbarProps = {
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Navbar = ({ menuOpen, setMenuOpen }: NavbarProps) => {
+  // const [menuOpen, setMenuOpen] = useState<boolean>(false);
   //   const user = false;
   return (
     // <div className="h-12 text-blue-600 p-4 flex items-center justify-between   uppercase md:h-24 lg:px-20 xl:px-40">
@@ -30,7 +37,7 @@ const Navbar = () => {
     //   </div>
     // </div>
     <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md border border-zinc-700 text-white shadow-lg">
+      <nav className="fixed hidden top-6 left-1/2 -translate-x-1/2 z-50 md:flex items-center gap-6 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md border border-zinc-700 text-white shadow-lg">
         <Link className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
           Features
         </Link>
@@ -44,6 +51,26 @@ const Navbar = () => {
           Contact
         </Link>
       </nav>
+
+      {/* mobile view */}
+      <div className={`fixed top-0 left-0 w-full bg-[rgba(10,10,10,0.8)] z-40 flex flex-col items-center justify-center gap-6 text-5xl transition-all duration-300 ease-in-out ${menuOpen ? "h-screen opacity-100 pointer-events-auto" : "h-0 opacity-0 pointer-events-none"}`}>
+        <button onClick={() => setMenuOpen(false)} className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer" aria-label="Close Menu">
+          &times;
+        </button>
+
+        <Link className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
+          Features
+        </Link>
+        <Link className="hover:text-gray-300 transition-colors" href="/templateStore">
+          Store
+        </Link>
+        <Link className="hover:text-gray-300 transition-colors" href="/">
+          Solutions
+        </Link>
+        <Link className="hover:text-gray-300 transition-colors" href="#contact-us">
+          Contact
+        </Link>
+      </div>
     </>
   );
 };
