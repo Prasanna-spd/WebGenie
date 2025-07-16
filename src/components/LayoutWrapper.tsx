@@ -1,11 +1,14 @@
-// components/LayoutWrapper.tsx
+
 "use client";
 
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
+import { useState } from "react";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const shouldHideNavbar =
   pathname === "/login" ||
@@ -15,7 +18,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <>
-      {!shouldHideNavbar && <Navbar />}
+      {!shouldHideNavbar && <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen}  />}
       {children}
     </>
   );
