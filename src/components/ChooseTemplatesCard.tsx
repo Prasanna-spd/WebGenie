@@ -15,7 +15,7 @@ function ChooseTemplatesCard({ image, desc, title}: Props) {
       {/* Image Section */}
       <div className="w-full">
         <div className="relative w-full h-64 rounded-t-xl overflow-hidden">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image src={image} alt={title} fill className="md:object-cover sm:object-contain" />
         </div>
       </div>
 
