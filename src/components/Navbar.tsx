@@ -58,16 +58,16 @@ const Navbar = ({ menuOpen, setMenuOpen }: NavbarProps) => {
           &times;
         </button>
 
-        <Link className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
+        <Link onClick={() => setMenuOpen(false)} className="hover:text-gray-300 transition-colors" href="#features" scroll={true}>
           Features
         </Link>
-        <Link className="hover:text-gray-300 transition-colors" href="/templateStore">
+        <Link onClick={() => setMenuOpen(false)} className="hover:text-gray-300 transition-colors" href="/templateStore">
           Store
         </Link>
-        <Link className="hover:text-gray-300 transition-colors" href="/">
+        <Link onClick={() => setMenuOpen(false)} className="hover:text-gray-300 transition-colors" href="/">
           Solutions
         </Link>
-        <Link className="hover:text-gray-300 transition-colors" href="#contact-us">
+        <Link onClick={() => setMenuOpen(false)} className="hover:text-gray-300 transition-colors" href="#contact-us">
           Contact
         </Link>
       </div>
