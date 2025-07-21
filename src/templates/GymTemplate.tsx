@@ -13,9 +13,43 @@ interface GymTemplateProps {
   showDownload?: boolean;
 }
 
+const sticker = "/gymMan.png";
+const heroTagLine = "Be Fierce With Wild Workouts.";
 const wildProgramImages = ["/gymMan.png", "/gymMan.png", "/gymMan.png"];
+const stickerBelowName="Sample Gym page"
 
 const services = [
+  {
+    icon: "/gymMan.png",
+    tag: "Lorem ipsum dolor",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+  },
+  {
+    icon: "/gymMan.png",
+    tag: "Lorem ipsum dolor",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+  },
+  {
+    icon: "/gymMan.png",
+    tag: "Lorem ipsum dolor",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+  },
+  {
+    icon: "/gymMan.png",
+    tag: "Lorem ipsum dolor",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+  },
+];
+const gymDetails = 
+  {
+    icon: "/gymMan.png",
+    name:"Lorem ipsum dolor sit amet.",
+    phNum: "80000000",
+    email: "support@superrecipesselection.com",
+  }
+ 
+
+const wildProgramDetails = [
   {
     icon: "/gymMan.png",
     tag: "Lorem ipsum dolor",
@@ -120,19 +154,17 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, 
           }}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <Image src="/gymMan.png" alt="gymman" width={500} height={500} className="h-[900px] w-[500px]" />
+          <Image src={sticker} alt="gymman" width={500} height={500} className="h-[900px] w-[500px]" />
         </div>
         <div className="absolute bottom-10 left-52 z-10 text-8xl text-left text-red-500 font-bold space-y-2">
-          <div>Be</div>
-          <div>Fierce</div>
-          <div>With</div>
-          <div>Wild</div>
-          <div>Workouts</div>
+          {heroTagLine.split(" ").map((word, i) => (
+            <div key={i}>{word}</div>
+          ))}
         </div>
 
         <div className="absolute flex flex-col justify-center top-0 left-20 bg-red-600 w-auto text-black ">
           <img src="" alt="the sticker of the gym" />
-          <div className="text-2xl font-bold font-serif px-3 rotate-[-6deg]">Sample Gym page</div>
+          <div className="text-2xl font-bold font-serif px-3 rotate-[-6deg]">{stickerBelowName}</div>
         </div>
         <div className="absolute top-8 right-20 space-x-4 ">
           <button className="px-4 py-2 bg-transparent text-white border border-white rounded hover:bg-red-600 hover:cursor-pointer">Login</button>
@@ -177,6 +209,7 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, 
               <div className="p-4 flex flex-col gap-2 text-left">
                 <h4 className="text-2xl text-red-500 font-light ">{String(i + 1).padStart(2, "0")}.</h4>
                 <hr className="border-red-500 w-full" />
+                {/* H2 and P tags to be replace by AI content */}
                 <h2 className="text-4xl text-white font-semibold pt-2 pb-2">Lorem, ipsum.</h2>
                 <p className="text-base text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.</p>
               </div>
@@ -247,13 +280,13 @@ const GymTemplate: React.FC<GymTemplateProps> = ({ title, subtitle, about, cta, 
 
       <div className="h-[50vh] flex flex-col justify-center items-center text-center bg-red-500/50 text-black">
         <div className="w-auto h-auto pb-7">
-          <Image src="/gymMan.png" alt="sticker" width={50} height={50}/>
+          <Image src="/gymMan.png" alt="sticker" width={50} height={50} />
         </div>
-        <h1 className="font-extrabold text-4xl pb-8">Lorem ipsum dolor sit amet.</h1>
-        <p className="font-bold text-2xl">Call Us 80000000</p>
-        <p className="font-bold text-2xl pb-8">Email Us support@superrecipesselection.com</p>
+        <h1 className="font-extrabold text-4xl pb-8">{gymDetails.name}</h1>
+        <p className="font-bold text-2xl">{`Call Us: ${gymDetails.phNum}`}</p>
+        <p className="font-bold text-2xl pb-8">{`Email Us: ${gymDetails.email}`}</p>
         <div className="font-light text-sm">
-          <p>Copyright © 2022 WorkoutWildandFree</p>
+          <p>{`Copyright © 2022 ${gymDetails.name}`}</p>
           <p>Privacy Policy | Terms & Conditions | Support</p>
         </div>
       </div>
