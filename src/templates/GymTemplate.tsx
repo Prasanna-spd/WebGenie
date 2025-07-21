@@ -49,28 +49,28 @@ const gymDetails =
   }
  
 
-const wildProgramDetails = [
-  {
-    icon: "/gymMan.png",
-    tag: "Lorem ipsum dolor",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
-  },
-  {
-    icon: "/gymMan.png",
-    tag: "Lorem ipsum dolor",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
-  },
-  {
-    icon: "/gymMan.png",
-    tag: "Lorem ipsum dolor",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
-  },
-  {
-    icon: "/gymMan.png",
-    tag: "Lorem ipsum dolor",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
-  },
-];
+// const wildProgramDetails = [
+//   {
+//     icon: "/gymMan.png",
+//     tag: "Lorem ipsum dolor",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+//   },
+//   {
+//     icon: "/gymMan.png",
+//     tag: "Lorem ipsum dolor",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+//   },
+//   {
+//     icon: "/gymMan.png",
+//     tag: "Lorem ipsum dolor",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+//   },
+//   {
+//     icon: "/gymMan.png",
+//     tag: "Lorem ipsum dolor",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eligendi. Fugiat velit non aspernatur dicta facere nesciunt quo natus quod.",
+//   },
+// ];
 const plans = [
   {
     price: "Rs 2999",
