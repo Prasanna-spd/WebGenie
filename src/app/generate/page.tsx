@@ -8,15 +8,15 @@ import { RealEstateTemplate } from "@/templates/RealEstate";
 import { RestaurantTemplate } from "@/templates/RestaurantTemplate";
 import { SaaSTemplate } from "@/templates/SaaSAppTemplate";
 import { useSearchParams } from "next/navigation";
-
+import { gymImagePrompts } from "@/lib/prompts";
 
 interface AIContent {
   title: string;
-  brand_name:string;
+  brand_name: string;
   subtitle: string;
   about: string;
   cta: string;
-  brands:Array<string>
+  brands: Array<string>;
 }
 
 function GeneratePageContent() {
@@ -39,22 +39,22 @@ function GeneratePageContent() {
 
   // text-to-image generation
 
-  // const fetchImageFromPrompt = async (prompt: string): Promise<string | null> => {
-  //   try {
-  //     const res = await fetch("/api/gen-image", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ prompt }),
-  //     });
+  const fetchImageFromPrompt = async (prompt: string): Promise<string[]> => {
+    try {
+      const res = await fetch("/api/gen-image", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
 
-  //     const data = await res.json();
-  //     console.log("the nebius frontend",data)
-  //     return data.image; // This is a base64 string
-  //   } catch (err) {
-  //     console.error("Image generation failed:", err);
-  //     return null;
-  //   }
-  // };
+      const data = await res.json();
+      console.log("the nebius frontend", data);
+      return data.image; // This is a base64 string
+    } catch (err) {
+      console.error("Image generation failed:", err);
+      return ["no images"];
+    }
+  };
 
   const fetchContentFromAI = async (templateType: string) => {
     setLoading(true);
@@ -62,7 +62,12 @@ function GeneratePageContent() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: `Generate homepage for a ${templateType} website` }),
+        body: JSON.stringify({ prompt: `Generate complete ${templateType}/fitness website content in JSON format with the following fields:` }),
+        // body: JSON.stringify({ prompt:
+        //   `
+        //   Generate homepage for a website
+        //   Generate complete ${templateType}/fitness website content in JSON format with the following fields:
+        //   ` }),
       });
 
       const data = await res.json();
@@ -71,12 +76,8 @@ function GeneratePageContent() {
 
       const parsed: AIContent = {
         ...data.content,
-        brands: Array.isArray(data.content.brands)
-          ? data.content.brands
-          : typeof data.content.brands === "string"
-            ? data.content.brands.split(",").map((b:string) => b.trim())
-            : [],
-      }
+        brands: Array.isArray(data.content.brands) ? data.content.brands : typeof data.content.brands === "string" ? data.content.brands.split(",").map((b: string) => b.trim()) : [],
+      };
       console.log("new pasring method", parsed);
 
       setContent(parsed);
@@ -87,7 +88,7 @@ function GeneratePageContent() {
       //   `E-commerce banner image for ${parsed.title}`,     // hero 1
       //   `Modern fashion carousel image for ${parsed.subtitle}`,  // hero 2
       //   `Lifestyle product shot for ${parsed.cta}`,         // hero 3
-      
+
       //   `image for Fashion item on clean white background`,          // feature 1
       //   `image for Trendy outfit flat lay`,                          // feature 2
       //   `image for Close-up of fabric or accessory`,                 // feature 3
@@ -97,10 +98,17 @@ function GeneratePageContent() {
       //   `image for Classic casual style`,                            // best-seller 3
       // ];
 
-      // const imagePromises = prompts.map((p) => fetchImageFromPrompt(p));
-      // const generatedImages = await Promise.all(imagePromises);
-      // console.log("images",generatedImages)
-      // setImages(generatedImages.filter((img) => img !== null) as string[]);
+      // const p = gymImagePrompts();
+      // console.log(p, "images from prompt");
+      // const promptArray = [p.heroImage, ...p.wildPrograms, ...p.services];
+
+      // const imagePromises = promptArray.map((prompt) => fetchImageFromPrompt(prompt));
+
+      // const generatedImagesNested = await Promise.all(imagePromises);
+      // const generatedImages = generatedImagesNested.flat();
+
+      // console.log("images", generatedImages);
+      // setImages(generatedImages.filter((img): img is string => img !== null));
 
       setShowDownload(true);
       console.log("parsed content", content);
@@ -116,10 +124,10 @@ function GeneratePageContent() {
 
     switch (template) {
       case "gym":
-        return <GymTemplate {...content} showDownload={showDownload} />;
+        return <GymTemplate {...content} showDownload={showDownload}/>;
       case "ecomm":
-        return <EcommerceTemplate {...content} showDownload={showDownload}/>;
-        // return <EcommerceTemplate {...content} showDownload={showDownload} images={images}/>;
+        return <EcommerceTemplate {...content} showDownload={showDownload} />;
+      // return <EcommerceTemplate {...content} showDownload={showDownload} images={images}/>;
       case "agency":
         return <AgencyTemplate {...content} showDownload={showDownload} />;
       case "SaaS":
@@ -150,8 +158,6 @@ export default function GeneratePage() {
     </Suspense>
   );
 }
-
-
 
 // "use client";
 
